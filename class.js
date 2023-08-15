@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //----------------------- CLASSES --------------------------
 console.log("\n----------------------- CLASSES --------------------------\n");
 class Employee {
@@ -6,6 +7,9 @@ class Employee {
         this.id = id;
         this.name = name;
         this.address = address;
+    }
+    login() {
+        return { name: "John", age: 60, id: 1, email: "test@yahoo.com" };
     }
     getNameWithAddress() {
         //return this.name + " " + this.address;
@@ -16,7 +20,12 @@ class Employee {
         return 3000;
     }
 }
-let john = new Employee(1, "James", "Highway 78");
+let john = new Employee(1, "James", {
+    street: "wall street",
+    city: "new york",
+    state: "NY",
+    pin: "0000",
+});
 /*
 john.id = 1;
 john.name = "John";
@@ -31,9 +40,14 @@ class Manager extends Employee {
         super(id, name, address);
     }
     getNameWithAddress() {
-        return `${this.name} is a manager at ${this.address}`;
+        return `${this.name} is a manager at ${this.address.street}`;
     }
 }
-let mike = new Manager(2, "Mike", "KFC");
+let mike = new Manager(2, "Mike", {
+    street: "wall street",
+    city: "new york",
+    state: "NY",
+    pin: "0000",
+});
 console.log(mike.getNameWithAddress());
 console.log(Employee.getSalary());
